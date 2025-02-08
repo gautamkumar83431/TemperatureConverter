@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <video autoplay loop muted class="bg-video">
+            <source src="Live Temperature.mp4" type="video/mp4">
+     
+        </video>
+
+        <div class="converter">
+            <h1>Temperature Converter</h1>
+            <div class="input-container">
+                <input type="number" id="tempInput" placeholder="Enter temperature">
+                <select id="unitSelect">
+                    <option value="C">Celsius</option>
+                    <option value="F">Fahrenheit</option>
+                </select>
+                <button onclick="convertTemperature()">Convert</button>
+            </div>
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <script>function convertTemperature() {
+        const tempInput = document.getElementById('tempInput').value;
+        const unitSelect = document.getElementById('unitSelect').value;
+        const result = document.getElementById('result');
+    
+        if (tempInput === '') {
+            result.textContent = 'Please enter a valid temperature!';
+            return;
+        }
+    
+        let convertedTemp;
+    
+        if (unitSelect === 'C') {
+            // Convert Celsius to Fahrenheit
+            convertedTemp = (tempInput * 9/5) + 32;
+            result.textContent = `${tempInput}°C is equal to ${convertedTemp.toFixed(2)}°F`;
+        } else if (unitSelect === 'F') {
+            // Convert Fahrenheit to Celsius
+            convertedTemp = (tempInput - 32) * 5/9;
+            result.textContent = `${tempInput}°F is equal to ${convertedTemp.toFixed(2)}°C`;
+        }
+    }
+    </script>
+</body>
+</html>
